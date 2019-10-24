@@ -3,6 +3,7 @@ package com.example.thymeleaf_test;
 import com.example.thymeleaf_test.params.CommonMap;
 import com.example.thymeleaf_test.params.ResponseMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Arrays;
@@ -17,9 +18,8 @@ import java.util.Map;
  */
 @RestController
 public class TestController {
-    @GetMapping("/user/info")
-    public Map<String, Object> userInfo() throws Exception {
-        List<String> list = Arrays.asList("산에가기", "바다가기", "신라호텔뷔페가기");
-        return new ResponseMap().ok("성공하였습니다.", list);
+    @GetMapping("/todo/list/{dataid}/{id}")
+    public Map<String, Object> todolist(@PathVariable String dataid, @PathVariable String id) throws Exception {
+        return new ResponseMap().ok("성공하였습니다.", "");
     }
 }
